@@ -4,7 +4,7 @@
 
 ## Скачать
 
-Откройте **Releases**, скачайте ZIP и распакуйте оба EXE в одну папку. Компилировать проект не нужно.
+Откройте [Releases](https://github.com/germanut6-alt/StalcraftResolutionSwitcher/releases/latest), скачайте ZIP и распакуйте оба EXE в одну папку. Компилировать проект не нужно.
 
 ## Файлы
 
