@@ -6,9 +6,9 @@ using System.Threading;
 [assembly: AssemblyDescription("Single-instance background resolution monitor for STALCRAFT: X / STALZONE")]
 [assembly: AssemblyCompany("STALCRAFT Resolution Switcher contributors")]
 [assembly: AssemblyProduct("STALCRAFT Resolution Switcher")]
-[assembly: AssemblyCopyright("Copyright (c) 2026 STALCRAFT Resolution Switcher contributors")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyCopyright("Copyright (c) 2026 germanut6-alt")]
+[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
 
 namespace StalcraftResolutionSwitcher
 {

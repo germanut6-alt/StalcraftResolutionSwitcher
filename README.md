@@ -24,14 +24,6 @@
 
 Настройки находятся в `%LOCALAPPDATA%\StalcraftResolutionSwitcher\settings.ini`.
 
-## Сборка
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1
-```
-
-Готовые файлы появятся в `dist`.
-
 ## Лицензия
 
-MIT
+MIT © 2026 germanut6-alt

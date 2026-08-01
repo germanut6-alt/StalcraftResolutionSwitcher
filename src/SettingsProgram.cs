@@ -8,9 +8,9 @@ using System.Threading;
 [assembly: AssemblyDescription("Terminal settings for STALCRAFT Resolution Monitor")]
 [assembly: AssemblyCompany("STALCRAFT Resolution Switcher contributors")]
 [assembly: AssemblyProduct("STALCRAFT Resolution Switcher")]
-[assembly: AssemblyCopyright("Copyright (c) 2026 STALCRAFT Resolution Switcher contributors")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyCopyright("Copyright (c) 2026 germanut6-alt")]
+[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
 
 namespace StalcraftResolutionSwitcher
 {
@@ -370,7 +370,7 @@ namespace StalcraftResolutionSwitcher
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("============================================================");
-            Console.WriteLine("          STALCRAFT RESOLUTION SETTINGS  v1.0.1");
+            Console.WriteLine("          STALCRAFT RESOLUTION SETTINGS  v1.0.2");
             Console.WriteLine("============================================================");
             Console.ResetColor();
             Console.WriteLine();
