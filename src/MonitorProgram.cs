@@ -7,8 +7,8 @@ using System.Threading;
 [assembly: AssemblyCompany("STALCRAFT Resolution Switcher contributors")]
 [assembly: AssemblyProduct("STALCRAFT Resolution Switcher")]
 [assembly: AssemblyCopyright("Copyright (c) 2026 STALCRAFT Resolution Switcher contributors")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
 
 namespace StalcraftResolutionSwitcher
 {

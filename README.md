@@ -20,7 +20,7 @@
 3. Включите автозагрузку пунктом `5`.
 4. Закройте настройки. Монитор продолжит работать в фоне.
 
-По умолчанию отслеживаются `stalcraftw.exe`, `stalcraft.exe` и `stalzone.exe`.
+По умолчанию указано `STALZONE;stalzone;Stalzone`.
 
 Настройки находятся в `%LOCALAPPDATA%\StalcraftResolutionSwitcher\settings.ini`.
 

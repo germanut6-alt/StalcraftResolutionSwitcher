@@ -9,8 +9,8 @@ using System.Threading;
 [assembly: AssemblyCompany("STALCRAFT Resolution Switcher contributors")]
 [assembly: AssemblyProduct("STALCRAFT Resolution Switcher")]
 [assembly: AssemblyCopyright("Copyright (c) 2026 STALCRAFT Resolution Switcher contributors")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
 
 namespace StalcraftResolutionSwitcher
 {
@@ -66,7 +66,10 @@ namespace StalcraftResolutionSwitcher
             {
                 Render();
                 ConsoleKey key = Console.ReadKey(true).Key;
-                if (key == ConsoleKey.Q || key == ConsoleKey.Escape)
+                if (key == ConsoleKey.D0
+                    || key == ConsoleKey.NumPad0
+                    || key == ConsoleKey.Q
+                    || key == ConsoleKey.Escape)
                 {
                     return 0;
                 }
@@ -188,9 +191,9 @@ namespace StalcraftResolutionSwitcher
             WriteHeader();
             Console.WriteLine("Текущие процессы: " + settings.ProcessNames);
             Console.WriteLine("Укажите имена без .exe через точку с запятой.");
-            Console.Write("Новое значение (Enter — без изменений): ");
+            Console.Write("Новое значение (Enter/0 — назад): ");
             string input = (Console.ReadLine() ?? string.Empty).Trim();
-            if (input.Length > 0 && ProcessDetector.ParseNames(input).Count > 0)
+            if (!IsBackCommand(input) && ProcessDetector.ParseNames(input).Count > 0)
             {
                 settings.ProcessNames = input;
                 SaveAndNotify();
@@ -206,9 +209,16 @@ namespace StalcraftResolutionSwitcher
         {
             SafeClear();
             WriteHeader();
-            Console.Write("Интервал проверки 1–10 секунд (сейчас " + settings.PollIntervalMs / 1000 + "): ");
+            Console.Write("Интервал 1–10 секунд, 0 — назад (сейчас " + settings.PollIntervalMs / 1000 + "): ");
+            string input = (Console.ReadLine() ?? string.Empty).Trim();
+            if (IsBackCommand(input))
+            {
+                lastEvent = "Без изменений.";
+                return;
+            }
+
             int seconds;
-            if (int.TryParse(Console.ReadLine(), out seconds) && seconds >= 1 && seconds <= 10)
+            if (int.TryParse(input, out seconds) && seconds >= 1 && seconds <= 10)
             {
                 settings.PollIntervalMs = seconds * 1000;
                 SaveAndNotify();
@@ -304,9 +314,9 @@ namespace StalcraftResolutionSwitcher
 
             while (true)
             {
-                Console.Write("Введите, например, 1280x720 (или Enter): ");
+                Console.Write("Введите 1280x720 (Enter/0 — назад): ");
                 string input = (Console.ReadLine() ?? string.Empty).Trim();
-                if (input.Length == 0)
+                if (IsBackCommand(input))
                 {
                     return new ResolutionChoice(currentWidth, currentHeight);
                 }
@@ -351,7 +361,7 @@ namespace StalcraftResolutionSwitcher
             Console.WriteLine("[5] Вкл./выкл. автозагрузку [6] Вернуть разрешение сейчас");
             Console.WriteLine("[7] Запустить/остановить монитор");
             Console.WriteLine("[T] Безопасно проверить режимы");
-            Console.WriteLine("[R] Обновить состояние      [Q] Закрыть только настройки");
+            Console.WriteLine("[R] Обновить состояние      [0] Выход");
             Console.WriteLine();
             Console.Write("Выберите действие: ");
         }
@@ -360,7 +370,7 @@ namespace StalcraftResolutionSwitcher
         {
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("============================================================");
-            Console.WriteLine("          STALCRAFT RESOLUTION SETTINGS  v1.0");
+            Console.WriteLine("          STALCRAFT RESOLUTION SETTINGS  v1.0.1");
             Console.WriteLine("============================================================");
             Console.ResetColor();
             Console.WriteLine();
@@ -398,6 +408,13 @@ namespace StalcraftResolutionSwitcher
             return parts.Length == 2 && int.TryParse(parts[0], out width) && int.TryParse(parts[1], out height);
         }
 
+        private static bool IsBackCommand(string input)
+        {
+            return string.IsNullOrWhiteSpace(input)
+                || input.Equals("0", StringComparison.OrdinalIgnoreCase)
+                || input.Equals("q", StringComparison.OrdinalIgnoreCase);
+        }
+
         private static void SafeClear()
         {
             try
@@ -415,5 +432,4 @@ namespace StalcraftResolutionSwitcher
             return width + " × " + height;
         }
     }
-
 }

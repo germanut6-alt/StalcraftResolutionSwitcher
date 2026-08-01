@@ -23,11 +23,13 @@ namespace StalcraftResolutionSwitcher
 
     internal sealed class AppSettings
     {
+        public const string DefaultProcessNames = "STALZONE;stalzone;Stalzone";
+
         public int GameWidth = 1280;
         public int GameHeight = 720;
         public int RestoreWidth = 1920;
         public int RestoreHeight = 1080;
-        public string ProcessNames = "stalcraftw;stalcraft;stalzone";
+        public string ProcessNames = DefaultProcessNames;
         public int PollIntervalMs = 2000;
     }
 
@@ -107,6 +109,12 @@ namespace StalcraftResolutionSwitcher
             {
                 return new AppSettings();
             }
+
+            if (settings.ProcessNames.Equals("stalcraftw;stalcraft;stalzone", StringComparison.OrdinalIgnoreCase))
+            {
+                settings.ProcessNames = AppSettings.DefaultProcessNames;
+            }
+
             return settings;
         }
 
